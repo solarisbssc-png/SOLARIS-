@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="google-site-verification" content="wkVS0D-G0oKMQjX8fTIW71aAIlVz3-HeyF0nTZyG3vw" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solaris | Paneles solares en Cali</title>
+<style>
+  @font-face{
+    font-family:'Handy';
+    src:url('fonts/Handy.otf') format('opentype');
+    font-weight:400;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Cuprum';
+    src:url('fonts/Cuprum-Regular.ttf') format('truetype');
+    font-weight:400;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Cuprum';
+    src:url('fonts/Cuprum-Medium.ttf') format('truetype');
+    font-weight:500;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Cuprum';
+    src:url('fonts/Cuprum-SemiBold.ttf') format('truetype');
+    font-weight:600;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Cuprum';
+    src:url('fonts/Cuprum-Bold.ttf') format('truetype');
+    font-weight:700;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'IBM Plex Serif';
+    src:url('fonts/IBMPlexSerif-Medium.ttf') format('truetype');
+    font-weight:400;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Limelight';
+    src:url('fonts/Limelight-Regular.ttf') format('truetype');
+    font-weight:400;
+    font-display:swap;
+  }
+  :root{
+    --bg:#F2F1E8;
+    --accent:#F5B800;
+    --gold:#C98A12;
+    --ink:#000000;
+    --ink-soft:#4A4A45;
+    --line:#DEDCCC;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; font-size:112%;}
+  body{font-family:'IBM Plex Serif', serif; color:var(--ink); background:var(--bg); line-height:1.65; font-size:18px;}
+  h1,h2,h3,.brand-word{font-family:'Handy', cursive; font-weight:400;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  header{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 32px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:46px; width:46px;}
+  .brand-word{font-size:2.6rem; color:var(--ink); line-height:1;}
+  .navlinks{display:none; gap:30px; list-style:none;}
+  @media(min-width:760px){.navlinks{display:flex;}}
+  .navlinks a{text-decoration:none; font-weight:600; font-size:.98rem; color:var(--ink-soft); transition:color .2s;}
+  .navlinks a:hover{color:var(--gold);}
+  .nav-cta{background:var(--accent); color:#1a1400; font-weight:700; font-size:.92rem; padding:10px 20px; border-radius:24px; text-decoration:none; white-space:nowrap;}
+
+  .hero{overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:44px; padding:56px 0 72px; align-items:center;}
+  @media(min-width:860px){.hero-grid{grid-template-columns:1.1fr 0.9fr; padding:84px 0 96px;}}
+  .hero h1{font-size:clamp(2.6rem, 6vw, 4rem); line-height:1.08; max-width:14ch;}
+  .hero h1 em{font-style:normal; color:var(--gold);}
+  .hero p.lead{margin-top:20px; font-size:1.1rem; color:var(--ink-soft); max-width:44ch;}
+  .hero-ctas{display:flex; gap:16px; margin-top:30px; flex-wrap:wrap;}
+  .btn-primary{background:var(--accent); color:#1a1400; font-weight:700; padding:14px 28px; border-radius:24px; text-decoration:none; font-size:1rem;}
+  .btn-secondary{border:2px solid var(--ink); color:var(--ink); font-weight:600; padding:12px 26px; border-radius:24px; text-decoration:none; font-size:1rem;}
+  .sun-wrap{position:relative; max-width:340px; margin:0 auto;}
+  .sun-wrap img{border-radius:50%; animation:rise 1.4s ease-out;}
+  @keyframes rise{from{transform:translateY(24px); opacity:0;} to{transform:translateY(0); opacity:1;}}
+  @media (prefers-reduced-motion: reduce){.sun-wrap img{animation:none;}}
+
+  section{padding:70px 0;}
+  .section-head{max-width:56ch; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.6rem); color:var(--ink);}
+  .section-head p{margin-top:10px; color:var(--ink-soft); font-size:1.02rem;}
+
+  .about{display:grid; grid-template-columns:1fr; gap:36px;}
+  @media(min-width:800px){.about{grid-template-columns:1.3fr 0.7fr;}}
+  .about-text p{color:var(--ink-soft); margin-bottom:16px; max-width:60ch;}
+  .stat-box{background:var(--ink); color:#fff; padding:30px 26px; border-radius:18px; align-self:start;}
+  .stat-box .num{font-family:'Handy',cursive; font-size:2.6rem; font-weight:400; color:var(--accent);}
+  .stat-box .feature-title{font-family:'Handy',cursive; font-size:1.4rem; font-weight:400; color:var(--accent); margin-bottom:4px;}
+  .stat-box .label{margin-top:4px; color:#E7E4D8; font-size:.95rem;}
+  .stat-box hr{border:none; border-top:1px solid #3a3a35; margin:18px 0;}
+
+  .servicios{background:var(--card);}
+  .service-row{padding:22px 0; border-top:2px dashed var(--line);}
+  .servicios .service-row:last-child{border-bottom:2px dashed var(--line);}
+  .service-row summary{
+    display:flex; align-items:center; gap:16px; cursor:pointer; list-style:none;
+  }
+  .service-row summary::-webkit-details-marker{display:none;}
+  .service-row summary::marker{content:'';}
+  .service-num{font-family:'Handy',cursive; font-weight:400; color:var(--gold); font-size:1.6rem; width:36px; flex-shrink:0;}
+  .service-title{font-size:1.15rem; flex:1;}
+  .service-row .plus{
+    font-size:1.4rem; color:var(--ink); width:28px; height:28px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:transform .2s ease;
+  }
+  .service-row[open] .plus{transform:rotate(45deg);}
+  .service-desc{color:var(--ink-soft); font-size:.98rem; margin-top:14px; margin-left:52px;}
+  @media(min-width:760px){.service-desc{max-width:70ch;}}
+
+  .productos-scroll{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){.productos-scroll{grid-template-columns:repeat(3,1fr);}}
+  .product-card{border:2px solid var(--ink); border-radius:20px; padding:26px 24px; background:var(--card);}
+  .product-card .tag{display:inline-block; font-size:.8rem; font-weight:700; color:#fff; background:var(--gold); padding:4px 12px; border-radius:20px; margin-bottom:14px;}
+  .product-card h3{font-size:1.4rem; margin-bottom:8px;}
+  .product-card p{color:var(--ink-soft); font-size:.95rem; margin-bottom:12px;}
+  .product-card .fit{font-size:.88rem; color:var(--ink); font-weight:600;}
+
+  .contacto{background:var(--ink); color:#fff;}
+  .contact-grid{display:grid; grid-template-columns:1fr; gap:36px;}
+  @media(min-width:860px){.contact-grid{grid-template-columns:1fr 1fr;}}
+  .contact-info h2{font-size:clamp(2rem,4vw,2.6rem); color:var(--accent); margin-bottom:14px;}
+  .contact-info p.lead{color:#DAD8CC; margin-bottom:28px; max-width:42ch;}
+  .contact-list{list-style:none;}
+  .contact-list li{padding:14px 0; border-top:1px solid #2c2c28; display:flex; flex-direction:column; gap:2px;}
+  .contact-list li:last-child{border-bottom:1px solid #2c2c28;}
+  .contact-list .k{font-size:.8rem; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .contact-list .v{font-size:1.05rem; font-weight:500;}
+  .map-frame{border-radius:18px; overflow:hidden; border:2px solid #2c2c28; min-height:300px;}
+  .map-frame iframe{width:100%; height:100%; min-height:300px; border:0;}
+
+  .tagline{font-family:'Limelight',cursive; font-size:1.9rem; color:var(--gold); margin-top:10px; font-weight:400; line-height:1.3;}
+  .mv-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+  @media(min-width:760px){.mv-grid{grid-template-columns:1fr 1fr;}}
+  .mv-card{background:var(--card); border:2px solid var(--ink); border-radius:20px; padding:30px 28px;}
+  .mv-card h3{font-size:1.7rem; margin-bottom:12px; color:var(--gold);}
+  .mv-card p{color:var(--ink-soft); font-size:.98rem;}
+
+  .soluciones{background:var(--card);}
+  .soluciones-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+  @media(min-width:760px){.soluciones-grid{grid-template-columns:repeat(3,1fr);}}
+  .solucion-card{text-align:center; background:var(--bg); border-radius:20px; padding:36px 20px; border:2px solid var(--line);}
+  .solucion-img{width:96px; height:96px; margin:0 auto 18px; display:flex; align-items:center; justify-content:center; font-size:2.6rem; background:#fff; border-radius:50%; border:2px solid var(--ink); overflow:hidden;}
+  .solucion-img img{width:100%; height:100%; object-fit:cover;}
+  .solucion-card h3{font-size:1.35rem;}
+
+  .como-funciona{background:var(--bg);}
+  .pasos-grid{display:grid; grid-template-columns:1fr; gap:40px; position:relative;}
+  @media(min-width:760px){
+    .pasos-grid{grid-template-columns:repeat(4,1fr); gap:12px;}
+    .pasos-grid::before{
+      content:''; position:absolute; top:36px; left:12.5%; right:12.5%; height:2px;
+      background:var(--line); z-index:0;
+    }
+  }
+  .paso{text-align:center; padding:0 10px; position:relative; z-index:1;}
+  .paso-top{margin-bottom:16px;}
+  .paso-icon{
+    position:relative; width:72px; height:72px; border-radius:50%; margin:0 auto;
+    background:var(--card); border:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:1.9rem;
+  }
+  .paso-icon .num-badge{
+    position:absolute; top:-8px; right:-8px; background:var(--ink); color:var(--accent);
+    font-family:'Handy',cursive; font-size:.95rem; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .paso h3{font-size:1.1rem; margin-bottom:6px;}
+  .paso p{color:var(--ink-soft); font-size:.92rem;}
+
+  footer{background:var(--ink); border-top:1px solid #2c2c28; padding:24px 0; color:#B9B7AA; font-size:.88rem;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; align-items:center;}
+  .social-links{display:flex; gap:14px;}
+  .social-links a{
+    width:38px; height:38px; border-radius:50%; border:1px solid #3a3a35;
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    color:#B9B7AA; transition:border-color .2s, color .2s;
+  }
+  .social-links a:hover{border-color:var(--accent); color:var(--accent);}
+  .social-links svg{width:18px; height:18px; fill:currentColor;}
+
+  .social-float{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    display:flex; flex-direction:column; gap:12px; align-items:center;
+  }
+  .float-btn{
+    width:52px; height:52px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.25); text-decoration:none;
+  }
+  .float-btn svg{width:26px; height:26px;}
+  .float-btn.wa{background:#25D366;}
+  .float-btn.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);}
+  .float-btn.tt{background:#000000;}
+  .float-btn:hover{filter:brightness(1.08);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <span class="brand-word">Solaris</span>
+    </div>
+    <ul class="navlinks">
+      <li><a href="#soluciones">Soluciones</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#nosotros">Sobre nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="#contacto">Cotizar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Donde hay sol, <em>Hay energia</em></h1>
+      <p class="lead">Aprovecha la energía solar para tu hogar, finca o negocio y reduce tu gasto de electricidad.
+
+Diseñamos, instalamos y mantenemos sistemas solares para zonas rurales del Valle del Cauca.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#contacto">Cotiza tu sistema </a>
+        <a class="btn-secondary" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="sun-wrap">
+      <img src="solaris-logo.png" alt="Solaris">
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <div class="about-text">
+      <div class="section-head">
+        <h2>¿Por qué Solaris?</h2>
+    <div class="stat-box">
+      <div class="feature-title">A tu medida</div>
+      <div class="label">Sistemas diseñados según el consumo y las necesidades de cada hogar o negocio.</div>
+      <hr>
+      <div class="feature-title">De principio a fin</div>
+      <div class="label">Te acompañamos desde el diagnóstico y diseño hasta la instalación y puesta en marcha.</div>
+      <hr>
+      <div class="feature-title">Pensado para el campo</div>
+      <div class="label">Soluciones adaptadas a las necesidades de las zonas rurales.</div>
+    </div>
+  </div>
+</section>
+
+<section id="razon-de-ser">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Nuestra razón de ser</h2>
+      <p class="tagline">Llevar la energía del sol más allá de las ciudades.</p>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h3>Misión</h3>
+        <p>En Solaris desarrollamos e implementamos soluciones de energía solar que permiten a hogares, fincas y pequeños negocios de zonas rurales acceder a una fuente de energía limpia, confiable y eficiente, brindando acompañamiento técnico durante todo el proceso.</p>
+      </div>
+      <div class="mv-card">
+        <h3>Visión</h3>
+        <p>Para el año 2031, Solaris será una empresa reconocida en el Valle del Cauca por ofrecer soluciones de energía solar confiables y adaptadas a las necesidades de las zonas rurales, ampliando su presencia en diferentes municipios y consolidando una base de clientes que confíe en nuestros servicios de instalación y mantenimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soluciones" id="soluciones">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Nuestras soluciones</h2>
+      <p>Paneles solares para:</p>
+    </div>
+    <div class="soluciones-grid">
+      <div class="solucion-card">
+        <div class="solucion-img">🏡</div>
+        <h3>Hogares</h3>
+      </div>
+      <div class="solucion-card">
+        <div class="solucion-img">🌾</div>
+        <h3>Fincas</h3>
+      </div>
+      <div class="solucion-card">
+        <div class="solucion-img">🏪</div>
+        <h3>Negocios</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Servicios</h2>
+      <p class="tagline">Energía solar, de principio a fin</p>
+      <p>Diseñamos, instalamos y acompañamos tu sistema para que aproveches la energía del sol y reduzcas tu factura.</p>
+    </div>
+    <details class="service-row">
+      <summary>
+        <span class="service-num">01</span>
+        <span class="service-title">Diseño del sistema</span>
+        <span class="plus">+</span>
+      </summary>
+      <p class="service-desc">Analizamos tu consumo eléctrico y el espacio disponible para diseñar un sistema a la medida de tu hogar o negocio.</p>
+    </details>
+    <details class="service-row">
+      <summary>
+        <span class="service-num">02</span>
+        <span class="service-title">Instalación certificada</span>
+        <span class="plus">+</span>
+      </summary>
+      <p class="service-desc">Nuestro equipo técnico instala los paneles siguiendo los estándares de seguridad y calidad de la industria.</p>
+    </details>
+    <details class="service-row">
+      <summary>
+        <span class="service-num">03</span>
+        <span class="service-title">Trámites y conexión</span>
+        <span class="plus">+</span>
+      </summary>
+      <p class="service-desc">Gestionamos los permisos y la conexión a la red con la empresa de energía, sin que tengas que hacer filas.</p>
+    </details>
+    <details class="service-row">
+      <summary>
+        <span class="service-num">04</span>
+        <span class="service-title">Mantenimiento y monitoreo</span>
+        <span class="plus">+</span>
+      </summary>
+      <p class="service-desc">Revisamos periódicamente tu sistema y monitoreamos su rendimiento para que siga ahorrándote dinero con los años.</p>
+    </details>
+  </div>
+</section>
+
+<section class="como-funciona" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>¿Cómo funciona?</h2>
+    </div>
+    <div class="pasos-grid">
+      <div class="paso">
+        <div class="paso-top">
+          <div class="paso-icon">📋<span class="num-badge">01</span></div>
+        </div>
+        <h3>Cuéntanos lo que necesitas</h3>
+        <p>Analizamos tu hogar o negocio y conocemos tus necesidades de consumo energético.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-top">
+          <div class="paso-icon">🧩<span class="num-badge">02</span></div>
+        </div>
+        <h3>Diseñamos tu solución</h3>
+        <p>Seleccionamos la cantidad y tipo de paneles adecuados para tu espacio y consumo.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-top">
+          <div class="paso-icon">🔧<span class="num-badge">03</span></div>
+        </div>
+        <h3>Instalamos tu sistema</h3>
+        <p>Nuestro equipo realiza la instalación y puesta en funcionamiento del sistema solar.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-top">
+          <div class="paso-icon">💰<span class="num-badge">04</span></div>
+        </div>
+        <h3>Empieza a ahorrar</h3>
+        <p>Genera tu propia energía y reduce progresivamente tu dependencia de la red eléctrica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Productos</h2>
+      <p>Soluciones para distintos tipos de consumo, desde una casa hasta una planta industrial.</p>
+    </div>
+    <div class="productos-scroll">
+      <div class="product-card">
+        <span class="tag">Residencial</span>
+        <h3>Kits para el hogar</h3>
+        <p>Sistemas compactos pensados para el consumo de una vivienda familiar, con instalación en techo.</p>
+        <p class="fit">Ideal para: reducir la factura mensual de casa.</p>
+      </div>
+      <div class="product-card">
+        <span class="tag">Comercial</span>
+        <h3>Sistemas para negocios</h3>
+        <p>Instalaciones de mayor capacidad para locales, oficinas y bodegas con consumo eléctrico alto.</p>
+        <p class="fit">Ideal para: negocios que buscan bajar costos operativos.</p>
+      </div>
+      <div class="product-card">
+        <span class="tag">Respaldo</span>
+        <h3>Baterías de respaldo</h3>
+        <p>Almacena la energía que generas de día para usarla de noche o durante cortes de luz.</p>
+        <p class="fit">Ideal para: zonas con cortes frecuentes de energía.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Hablemos de tu proyecto</h2>
+      <p class="lead">Cuéntanos sobre tu casa o negocio y te enviamos una cotización sin costo.</p>
+      <ul class="contact-list">
+        <li><span class="k">Teléfono / WhatsApp</span><span class="v">+57 317 691 9658</span></li>
+        <li><span class="k">Correo</span><span class="v">solarisb.s.s.c@gmail.com</span></li>
+        <li><span class="k">Ubicación</span><span class="v">Cali, Valle del Cauca, Colombia</span></li>
+        <li><span class="k">Horario</span><span class="v">Lunes a sábado, 8:00 a.m. – 5:00 p.m.</span></li>
+      </ul>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps?q=Cali,Valle%20del%20Cauca,Colombia&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Solaris</span>
+    <span>I.S</span>
+    <span>Cali, Valle del Cauca</span>
+    <div class="social-links">
+      <a href="https://wa.me/573176919658?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20paneles%20solares" target="_blank" rel="noopener" aria-label="WhatsApp de Solaris">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.2.6 4.3 1.7 6.1L4 29l8.1-1.6c1.8.9 3.8 1.4 5.9 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.8 1 1-4.7-.2-.4C5.5 17.6 5 16.3 5 15c0-6.1 4.9-11 11-11s11 4.9 11 11-4.9 10.8-11 10.8zm6-8.2c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@solaris.s.c.s" target="_blank" rel="noopener" aria-label="TikTok de Solaris">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 5.82c-1.02-.9-1.66-2.18-1.66-3.6h-3.14v13.2c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.29 0 .56.04.83.12v-3.2a6.06 6.06 0 0 0-.83-.06 6.03 6.03 0 1 0 6.03 6.03V9.68a8.3 8.3 0 0 0 4.87 1.56V8.1a4.85 4.85 0 0 1-3.2-2.28z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/solaris.s.c.s/" target="_blank" rel="noopener" aria-label="Instagram de Solaris">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33zm0 1.98c-3.15 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.78.39-1.13.74-.35.35-.56.67-.74 1.13-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.78.74 1.13.35.35.67.56 1.13.74.35.14.87.3 1.83.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.78-.39 1.13-.74.35-.35.56-.67.74-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3 3 0 0 0-.74-1.13 3 3 0 0 0-1.13-.74c-.35-.14-.87-.3-1.83-.34-1.23-.06-1.58-.07-4.73-.07zm0 3.37a5.45 5.45 0 1 1 0 10.9 5.45 5.45 0 0 1 0-10.9zm0 1.98a3.47 3.47 0 1 0 0 6.94 3.47 3.47 0 0 0 0-6.94zm5.66-2.2a1.27 1.27 0 1 1-2.54 0 1.27 1.27 0 0 1 2.54 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="social-float">
+  <a class="float-btn tt" href="https://www.tiktok.com/@solaris.s.c.s" target="_blank" rel="noopener" aria-label="TikTok de Solaris">
+    <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 5.82c-1.02-.9-1.66-2.18-1.66-3.6h-3.14v13.2c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9 1.3-2.9 2.9-2.9c.29 0 .56.04.83.12v-3.2a6.06 6.06 0 0 0-.83-.06 6.03 6.03 0 1 0 6.03 6.03V9.68a8.3 8.3 0 0 0 4.87 1.56V8.1a4.85 4.85 0 0 1-3.2-2.28z"/></svg>
+  </a>
+  <a class="float-btn ig" href="https://www.instagram.com/solaris.s.c.s/" target="_blank" rel="noopener" aria-label="Instagram de Solaris">
+    <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33zm0 1.98c-3.15 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.78.39-1.13.74-.35.35-.56.67-.74 1.13-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.78.74 1.13.35.35.67.56 1.13.74.35.14.87.3 1.83.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.78-.39 1.13-.74.35-.35.56-.67.74-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3 3 0 0 0-.74-1.13 3 3 0 0 0-1.13-.74c-.35-.14-.87-.3-1.83-.34-1.23-.06-1.58-.07-4.73-.07zm0 3.37a5.45 5.45 0 1 1 0 10.9 5.45 5.45 0 0 1 0-10.9zm0 1.98a3.47 3.47 0 1 0 0 6.94 3.47 3.47 0 0 0 0-6.94zm5.66-2.2a1.27 1.27 0 1 1-2.54 0 1.27 1.27 0 0 1 2.54 0z"/></svg>
+  </a>
+  <a class="float-btn wa" href="https://wa.me/573176919658?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20paneles%20solares" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 3C9.4 3 4 8.4 4 15c0 2.2.6 4.3 1.7 6.1L4 29l8.1-1.6c1.8.9 3.8 1.4 5.9 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.8 1 1-4.7-.2-.4C5.5 17.6 5 16.3 5 15c0-6.1 4.9-11 11-11s11 4.9 11 11-4.9 10.8-11 10.8zm6-8.2c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/>
+    </svg>
+  </a>
+</div>
+
+</body>
+</html>
